@@ -4,6 +4,8 @@ import br.com.sysmap.srcmssignportability.application.ports.in.PortabilityServic
 import br.com.sysmap.srcmssignportability.application.ports.out.PortabilityOpenFeign;
 import br.com.sysmap.srcmssignportability.application.ports.out.PortabilityRepository;
 import br.com.sysmap.srcmssignportability.domain.Portability;
+import br.com.sysmap.srcmssignportability.domain.enums.PortabilityStatus;
+import br.com.sysmap.srcmssignportability.domain.enums.TelephoneCompany;
 import br.com.sysmap.srcmssignportability.framework.adapters.in.dtos.InputPortability;
 
 public class PortabilityServiceImpl implements PortabilityService {
@@ -25,4 +27,14 @@ public class PortabilityServiceImpl implements PortabilityService {
     public Portability savePortability(Portability portability) {
         return portabilityRepository.save(portability);
     }
+
+    private PortabilityStatus validatePortability(Portability portability) {
+        if (portability.getNumber().length() == 9 && portability.getSource().equals(TelephoneCompany.VIVO)
+        && !portability.getTarget().equals(TelephoneCompany.VIVO)) {
+            return PortabilityStatus.PORTADO;
+        }
+        return PortabilityStatus.NAO_PORTADO;
+    }
+
+
 }
