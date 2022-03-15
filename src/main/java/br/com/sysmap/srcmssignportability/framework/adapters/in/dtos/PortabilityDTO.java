@@ -1,6 +1,5 @@
 package br.com.sysmap.srcmssignportability.framework.adapters.in.dtos;
 
-import br.com.sysmap.srcmssignportability.domain.enums.PortabilityStatus;
 import br.com.sysmap.srcmssignportability.domain.enums.TelephoneCompany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -17,5 +16,5 @@ public class PortabilityDTO implements Serializable {
 
      private UUID id;
      private TelephoneCompany source;
-     private PortabilityStatus target;
+     private TelephoneCompany target;
 }
