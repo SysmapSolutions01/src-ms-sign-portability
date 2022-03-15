@@ -1,6 +1,9 @@
 package br.com.sysmap.srcmssignportability.application.ports.in;
 
-public interface PortabilityService {
+import br.com.sysmap.srcmssignportability.domain.Portability;
+import br.com.sysmap.srcmssignportability.framework.adapters.in.dtos.InputPortability;
 
-    void callbackPortability();
+public interface PortabilityService {
+    void callbackPortability(InputPortability inputPortability);
+    Portability savePortability(Portability portability);
 }
