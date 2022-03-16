@@ -19,8 +19,8 @@ public class PortabilityServiceImpl implements PortabilityService {
     }
 
     @Override
-    public void callbackPortability(InputPortability inputPortability) {
-        portabilityOpenFeign.updatePortabilityStatus(inputPortability);
+    public void callbackPortability(Portability portability) {
+        portabilityOpenFeign.updatePortabilityStatus(portability.getPortabilityId(), validatePortability(portability));
     }
 
     @Override
