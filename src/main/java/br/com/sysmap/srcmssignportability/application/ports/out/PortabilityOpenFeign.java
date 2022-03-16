@@ -1,8 +1,9 @@
 package br.com.sysmap.srcmssignportability.application.ports.out;
 
+import br.com.sysmap.srcmssignportability.domain.enums.PortabilityStatus;
 
-import br.com.sysmap.srcmssignportability.framework.adapters.in.dtos.InputPortability;
+import java.util.UUID;
 
 public interface PortabilityOpenFeign {
-    void updatePortabilityStatus(InputPortability inputPortability);
+    void updatePortabilityStatus(UUID portabilityId, PortabilityStatus portabilityStatus);
 }
