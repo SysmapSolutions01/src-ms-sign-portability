@@ -2,7 +2,9 @@ package br.com.sysmap.srcmssignportability.domain;
 
 import br.com.sysmap.srcmssignportability.domain.enums.PortabilityStatus;
 import br.com.sysmap.srcmssignportability.domain.enums.TelephoneCompany;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,6 +13,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 @Data
+@NoArgsConstructor
 @Document(collection = "portability")
 public class Portability implements Serializable {
 

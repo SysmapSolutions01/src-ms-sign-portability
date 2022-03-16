@@ -10,3 +10,20 @@ feign:
         connectTimeout: 5000
         readTimeout: 30000
         loggerLevel: full
+
+kafka:
+  topic: "ocpv08td-src-ms-portability-create"
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: rocket-01.srvs.cloudkafka.com:9094
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    properties:
+      security:
+        protocol: SASL_SSL
+      sasl:
+        mechanism: SCRAM-SHA-256
+        jaas:
+          config: org.apache.kafka.common.security.scram.ScramLoginModule required username="ocpv08td" password="Lg6w7qhcyJ4kkY99s4lTspM72SUP_1gk";
