@@ -14,7 +14,7 @@ import java.util.UUID;
 public class PortabilityDTO implements Serializable {
      private static final long serialVersionUID = 1L;
 
-     private UUID id;
+     private UUID portabilityId;
      private TelephoneCompany source;
      private TelephoneCompany target;
 }

@@ -7,5 +7,5 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class PortabilityFeignClientDTO {
-    PortabilityStatus portabilityStatus;
+    PortabilityStatus status;
 }

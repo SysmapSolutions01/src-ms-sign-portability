@@ -10,3 +10,27 @@ feign:
         connectTimeout: 5000
         readTimeout: 30000
         loggerLevel: full
+
+kafka:
+  topic: "ocpv08td-src-ms-portability-create"
+  group-id: "group"
+
+openfeign:
+  src-ms-portability-url: src-ms-portability-v2.herokuapp.com
+
+test:
+  var: 79804bf2-bcb4-4ec8-979f-3e8d04dea05e
+
+spring:
+  kafka:
+    consumer:
+      bootstrap-servers: rocket-01.srvs.cloudkafka.com:9094
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    properties:
+      security:
+        protocol: SASL_SSL
+      sasl:
+        mechanism: SCRAM-SHA-256
+        jaas:
+          config: org.apache.kafka.common.security.scram.ScramLoginModule required username="ocpv08td" password="Lg6w7qhcyJ4kkY99s4lTspM72SUP_1gk";
