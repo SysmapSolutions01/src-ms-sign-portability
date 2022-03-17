@@ -20,9 +20,4 @@ public class ServiceConfig {
     PortabilityServiceImpl portabilityService(PortabilityRepository portabilityRepository, PortabilityOpenFeign portabilityOpenFeign){
         return new PortabilityServiceImpl(portabilityRepository, portabilityOpenFeign);
     }
-
-    @Bean
-    PortabilityOpenFeign portabilityOpenFeign() {
-        return new PortabilityOpenfeignImpl();
-    }
 }
