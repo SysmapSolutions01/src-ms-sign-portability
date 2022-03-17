@@ -15,6 +15,12 @@ kafka:
   topic: "ocpv08td-src-ms-portability-create"
   group-id: "group"
 
+openfeign:
+  src-ms-portability-url: src-ms-portability-v2.herokuapp.com
+
+test:
+  var: 79804bf2-bcb4-4ec8-979f-3e8d04dea05e
+
 spring:
   kafka:
     consumer:
