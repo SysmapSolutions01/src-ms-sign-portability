@@ -13,6 +13,7 @@ feign:
 
 kafka:
   topic: "ocpv08td-src-ms-portability-create"
+  group-id: "group"
 
 spring:
   kafka:
