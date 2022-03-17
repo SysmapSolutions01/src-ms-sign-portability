@@ -6,7 +6,6 @@ import br.com.sysmap.srcmssignportability.application.ports.out.PortabilityRepos
 import br.com.sysmap.srcmssignportability.domain.Portability;
 import br.com.sysmap.srcmssignportability.domain.enums.PortabilityStatus;
 import br.com.sysmap.srcmssignportability.domain.enums.TelephoneCompany;
-import br.com.sysmap.srcmssignportability.framework.adapters.in.dtos.InputPortability;
 
 public class PortabilityServiceImpl implements PortabilityService {
 
