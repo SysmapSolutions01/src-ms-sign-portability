@@ -22,6 +22,11 @@ test:
   var: 79804bf2-bcb4-4ec8-979f-3e8d04dea05e
 
 spring:
+  application:
+    name: src-ms-sign-portability
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/src-ms-sign-portability?authSource=admin
   kafka:
     consumer:
       bootstrap-servers: rocket-01.srvs.cloudkafka.com:9094

@@ -19,11 +19,14 @@ public class PortabilityServiceImpl implements PortabilityService {
 
     @Override
     public void callbackPortability(Portability portability) {
-        portabilityOpenFeign.updatePortabilityStatus(portability.getPortabilityId(), validatePortability(portability));
+        portabilityOpenFeign.updatePortabilityStatus(portability.getPortabilityId(), portability.getStatus());
     }
 
     @Override
     public Portability savePortability(Portability portability) {
+        var status = validatePortability(portability);
+        portability.setStatus(status);
+        callbackPortability(portability);
         return portabilityRepository.save(portability);
     }
 
