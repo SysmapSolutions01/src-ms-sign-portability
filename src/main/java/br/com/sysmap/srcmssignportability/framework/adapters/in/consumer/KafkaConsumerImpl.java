@@ -37,8 +37,6 @@ public class KafkaConsumerImpl implements KafkaConsumer {
         BeanUtils.copyProperties(input.getPortability(), portability);
         portability.setPortabilityId(input.getPortability().getPortabilityId());
         log.warn("ID: " + portability.getPortabilityId());
-
-        this.portabilityService.callbackPortability(portability);
         this.portabilityService.savePortability(portability);
     }
 }
