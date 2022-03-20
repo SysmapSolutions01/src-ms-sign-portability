@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  mongodb:
+    container_name: 'mongo-portability'
+    image: mongo
+    ports:
+      - "27017:27017"
+      
+  ms2:
+    image: 'sysmaptreinamento2/src-ms-sign-portability:1.0.0'
+    build:
+      context: .
+    container_name: src-ms-sign-portability
+    restart: always
+    ports:
+      - "8081:8081"
