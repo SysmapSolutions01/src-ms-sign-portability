@@ -42,7 +42,9 @@ public class PortabilityServiceImplTests {
         portability.setTarget(TelephoneCompany.OI);
 
         try {
-            portabilityService.callbackPortability(portability);
+            BDDMockito.given(portabilityRepository.save(any())).willReturn(portability);
+
+            portabilityService.savePortability(portability);
 
             BDDMockito.verify(
                     portabilityOpenFeign,
@@ -57,17 +59,49 @@ public class PortabilityServiceImplTests {
     @DisplayName("PortabilityService - callbackPortability_NAO_PORTADO")
     void callbackPortability_NAO_PORTADO() {
         Portability portability = easy.nextObject(Portability.class);
-        portability.setNumber("12345678");
-        portability.setSource(TelephoneCompany.OI);
-        portability.setTarget(TelephoneCompany.VIVO);
+        portability.setNumber("123456789");
+        portability.setSource(TelephoneCompany.VIVO);
+        portability.setTarget(TelephoneCompany.OI);
+
+        Portability portabilityNumberInvalid = portability;
+        portabilityNumberInvalid.setNumber("12345678");
+
+        Portability portabilitySourceInvalid = portability;
+        portabilitySourceInvalid.setSource(TelephoneCompany.CLARO);
+
+        Portability portabilityTargetInvalid = portability;
+        portabilityTargetInvalid.setTarget(TelephoneCompany.VIVO);
 
         try {
-            portabilityService.callbackPortability(portability);
+            BDDMockito.given(portabilityRepository.save(any())).willReturn(portability);
 
+            portabilityService.savePortability(portabilityNumberInvalid);
             BDDMockito.verify(
                 portabilityOpenFeign,
                 BDDMockito.times(1)
-            ).updatePortabilityStatus(portability.getPortabilityId(), PortabilityStatus.NAO_PORTADO);
+            ).updatePortabilityStatus(
+                portabilityNumberInvalid.getPortabilityId(),
+                PortabilityStatus.NAO_PORTADO
+            );
+
+            portabilityService.savePortability(portabilitySourceInvalid);
+            BDDMockito.verify(
+                portabilityOpenFeign,
+                BDDMockito.times(2)
+            ).updatePortabilityStatus(
+                portabilitySourceInvalid.getPortabilityId(),
+                PortabilityStatus.NAO_PORTADO
+            );
+
+            portabilityService.savePortability(portabilityTargetInvalid);
+            BDDMockito.verify(
+                portabilityOpenFeign,
+                BDDMockito.times(3)
+            ).updatePortabilityStatus(
+                portabilityTargetInvalid.getPortabilityId(),
+                PortabilityStatus.NAO_PORTADO
+            );
+
         } catch (Exception e) {
             Assertions.fail(e.getMessage(), e);
         }

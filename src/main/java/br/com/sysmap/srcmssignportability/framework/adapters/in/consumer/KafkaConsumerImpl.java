@@ -4,14 +4,11 @@ import br.com.sysmap.srcmssignportability.application.ports.in.KafkaConsumer;
 import br.com.sysmap.srcmssignportability.application.ports.in.PortabilityService;
 import br.com.sysmap.srcmssignportability.domain.Portability;
 import br.com.sysmap.srcmssignportability.framework.adapters.in.dtos.InputPortability;
-import br.com.sysmap.srcmssignportability.framework.adapters.in.dtos.PortabilityDTO;
 import com.google.gson.Gson;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.stereotype.Component;
 
